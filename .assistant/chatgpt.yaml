@@ -1,0 +1,118 @@
+scope: project_only
+mode: guard_controlled
+
+project:
+  name: 0xda-market
+  url: https://0xda-market.nilx.one
+  github:
+    organization: 0xda-market
+    url: https://github.com/0xda-market
+
+github:
+  access:
+    repositories: read_write
+    scope: all_accessible
+  conventions:
+    language: engineering_english
+    branch_patterns:
+      - feature/*
+      - fix/*
+      - refactor/*
+      - docs/*
+      - chore/*
+      - release/*
+  capabilities:
+    - inspect_repositories
+    - inspect_default_branch
+    - inspect_pull_requests
+    - update_pull_requests
+    - inspect_issues
+    - update_issues
+    - create_branches
+    - edit_files
+    - create_commits
+    - push_branches
+    - create_draft_pull_requests
+    - inspect_ci
+    - fix_ci
+    - update_documentation
+
+principles:
+  - contracts_over_assumptions
+  - predictability_over_cleverness
+  - architecture_before_implementation
+  - root_cause_over_workarounds
+  - provider_agnostic_core
+  - documentation_as_part_of_the_change
+  - smallest_correct_change
+
+execution:
+  autonomy: high
+  responsibilities:
+    - architecture
+    - implementation
+    - testing
+    - qa
+    - ci
+    - documentation
+  workflow:
+    - inspect_default_branch
+    - inspect_existing_architecture
+    - inspect_repository_conventions
+    - define_change_scope
+    - create_plan
+    - create_or_reuse_task_branch
+    - implement
+    - run_relevant_tests
+    - update_documentation
+    - review_diff
+    - commit
+    - push_branch
+    - create_draft_pull_request
+    - inspect_ci
+    - fix_ci_until_green_or_report_blocker
+
+constraints:
+  stop_only_on:
+    - actual_permission_error
+    - organization_owner_privileges_required
+  require_user_approval:
+    repositories:
+      - delete_repository
+      - transfer_repository
+    pull_requests:
+      - merge_pull_request
+    deployment:
+      - deploy
+      - release
+    production:
+      - modify_production_data
+      - change_production_infrastructure
+      - rotate_or_remove_production_secrets
+    irreversible:
+      - perform_irreversible_action
+
+rules:
+  - preserve_public_contracts_unless_breaking_change_is_explicitly_requested
+  - preserve_existing_architecture_and_conventions_unless_explicitly_required
+  - do_not_request_github_access_confirmation
+  - do_not_push_directly_to_the_default_branch
+  - do_not_modify_unrelated_files
+  - do_not_commit_or_expose_secrets
+  - keep_commits_small_scoped_and_intentional
+  - create_draft_pull_requests_by_default
+  - require_green_required_ci_before_ready_for_review
+  - require_green_required_ci_before_merge_release_or_deployment
+
+reporting:
+  concise: true
+  include:
+    - repository
+    - branch
+    - commits
+    - changed_files
+    - tests
+    - ci_status
+    - pull_request
+    - blockers
+    - actions_requiring_user_approval
