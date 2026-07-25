@@ -1,27 +1,31 @@
 # Assistant Configuration
 
-This directory contains the stable, vendor-independent configuration for AI assistants working with this repository.
+This directory contains machine-facing configuration for AI assistants working with this repository and the wider `0xda-market` project.
 
 ## Files
 
 ### `0x0da.yaml`
 
-Defines the assistant's:
+Defines the vendor-independent assistant identity, engineering principles, communication rules, language policy, boundaries, decision model, and code standards.
 
-- engineering principles;
-- communication rules;
-- language policy;
-- boundaries;
-- decision model;
-- code and design standards.
+### `chatgpt.yaml`
+
+Defines the ChatGPT-specific project contract for:
+
+- GitHub access and capabilities;
+- repository conventions;
+- engineering workflow and autonomy;
+- approval boundaries;
+- CI and pull request policy;
+- concise execution reporting.
 
 ## Rules
 
-- Keep this configuration stable.
-- Store project-specific knowledge under `projects/`.
+- Keep vendor-independent behavior in `0x0da.yaml`.
+- Keep ChatGPT-specific operational instructions in `chatgpt.yaml`.
+- Store project knowledge under `projects/`.
 - Store current priorities under `state/`.
 - Store historical material under `archive/`.
-- Do not duplicate implementation details here.
+- Do not duplicate implementation details.
 - Prefer references to canonical repository files over copied context.
-
-The configuration is intentionally not tied to ChatGPT or any other single AI provider.
+- Never commit credentials, tokens, secrets, or private production data.
