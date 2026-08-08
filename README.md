@@ -1,12 +1,19 @@
-# mind
+# 0xda-market mind
 
-> A versioned context repository for humans and AI systems.
+> A versioned organization context repository for humans and AI systems.
+
+## Organization identity
+
+- **Organization:** `0xda-market`
+- **Parent organization:** [aiaiaiai tech. / 4xAI tech.](https://github.com/aiaiaiaitech)
+- **Owner:** [0x0sky](https://github.com/0x0sky)
+- **Role:** digital commerce organization
+
+`0xda-market` is a child organization in the aiaiaiai tech. ecosystem. This parent-child relationship is part of the canonical organizational and ownership model; GitHub itself represents both organizations as peer namespaces.
 
 ## Purpose
 
-`mind` is a vendor-independent source of truth for structured context. It defines a small reusable contract that can later specialize into a personal, organization, project, or product mind.
-
-The baseline intentionally avoids prescribing domain-specific folders. Concrete implementations compose only the modules they need.
+This repository specializes the shared `mind` contract as durable context for `0xda-market`. It records stable organization identity, ownership, boundaries, engineering context, and project relationships without duplicating repository-local implementation details.
 
 ## Contract
 
@@ -21,6 +28,17 @@ Every compatible mind must:
 - remain readable by humans and machines;
 - contain no secrets or private credentials.
 
+## Ecosystem relationship
+
+```text
+0x0sky
+└── aiaiaiai tech. / 4xAI tech.
+    ├── 0xda-market
+    └── nilx.one
+```
+
+Personal projects remain outside this corporate hierarchy unless explicitly declared otherwise.
+
 ## Architecture
 
 ```text
@@ -32,22 +50,12 @@ Mind
     └── README.md
 ```
 
-`Mind` is the abstraction. A repository becomes a concrete implementation by composing modules such as identity, assistant policy, governance, engineering, knowledge, systems, or state.
+`Mind` is the shared abstraction. This repository is the `0xda-market` specialization of that abstraction.
 
-Examples:
-
-```text
-PersonalMind = Identity + Assistant + Knowledge + Systems + State
-OrganizationMind = Identity + Governance + Engineering + Portfolio + Decisions
-```
-
-The baseline does not require these modules and does not define their internal content.
-
-## Design Principles
+## Design principles
 
 - **Single Responsibility:** one purpose per module and one topic per file.
 - **Open/Closed:** new mind types are added through modules, not by changing the baseline contract.
-- **Liskov Substitution:** every concrete mind satisfies the same manifest and validation invariants.
 - **Interface Segregation:** consumers load only the modules they need.
 - **Dependency Inversion:** concrete modules depend on the baseline contract; the baseline never depends on concrete modules.
 - Composition is preferred over inheritance.
@@ -55,11 +63,10 @@ The baseline does not require these modules and does not define their internal c
 
 ## Lifecycle
 
-1. Build and validate a neutral baseline snapshot.
-2. Tag and release that snapshot.
-3. Fork it into another account or organization.
-4. Evolve each repository independently as a concrete mind.
-5. Share later neutral improvements only through explicit commits or versioned specifications.
+1. Track the shared mind contract explicitly.
+2. Evolve this organization mind independently.
+3. Keep parent, owner, and organization identity durable and visible.
+4. Share neutral improvements upstream only through explicit commits or versioned specifications.
 
 ## Visibility
 
