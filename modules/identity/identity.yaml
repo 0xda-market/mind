@@ -1,0 +1,11 @@
+# © 2026 aiaiaiai · aiaiaiai.org
+# SPDX-License-Identifier: MIT
+schema_version: 1
+
+identity:
+  type: organization
+  id: 0xda-market
+  display_name: 0xda-market
+
+validation:
+  schema: schema/identity-resource.schema.json
