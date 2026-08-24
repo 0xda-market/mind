@@ -1,66 +1,73 @@
-# mind
+# 0xda-market mind
 
-> A versioned context repository for humans and AI systems.
+> Canonical durable organization context for `0xda-market`.
 
-## Purpose
+This repository is a concrete organization implementation of the implementation-independent [Mind Protocol](https://github.com/0x0sky/mind).
 
-`mind` is a vendor-independent source of truth for structured context. It defines a small reusable contract that can later specialize into a personal, organization, project, or product mind.
+## Organization identity
 
-The baseline intentionally avoids prescribing domain-specific folders. Concrete implementations compose only the modules they need.
+- **Organization:** `0xda-market`
+- **Canonical subject id:** `0xda-market`
+- **Parent organization:** [`aiaiaiai` / `4xAI`](https://github.com/aiaiaiai-org)
+- **Owner / root identity:** [0x0sky](https://github.com/0x0sky)
+- **Role:** digital commerce organization
 
-## Contract
+The parent-child relationship above is durable authored human context inherited from this repository's historical baseline documentation. This initial protocol canary deliberately does not invent a machine relationship predicate for it; relationship semantics belong in an explicit authored relationship resource when that contract is intentionally published.
 
-Every compatible mind must:
+## Protocol contract
 
-- declare an explicit owner and context version;
-- keep one canonical location for each concept;
-- separate stable context from transient state;
-- keep modules focused and independently replaceable;
-- declare module dependencies explicitly;
-- prefer references over duplicated content;
-- remain readable by humans and machines;
-- contain no secrets or private credentials.
+`manifest.yaml` is the machine-readable entry point. This is the first concrete `0xda-market` mind line:
 
-## Architecture
+- Mind Protocol: `0.9.0`;
+- manifest schema: v3;
+- organization context: `0.2.0`.
+
+`protocol.lock.yaml` pins the exact immutable upstream `v0.9.0` tag and commit, protocol descriptor, conformance contract, compatibility policy, and complete frozen schema set. Protocol version and organization context version are independent.
+
+## Historical baseline
+
+The branch `foundation/baseline-v0.1.0` remains historical source material and is not rewritten. It represented an abstract baseline without a concrete subject. This `0.2.0` line is therefore a fresh concrete publication, not a claim that the old baseline is inside the supported protocol migration floor.
+
+The repository already had a separate `master` history containing assistant/project configuration. This concrete line starts from that engineering history while explicitly preserving the authored organization facts from the historical baseline. Details are recorded in [`docs/migrations/foundation-to-mind-0.9.md`](docs/migrations/foundation-to-mind-0.9.md).
+
+## Composition
 
 ```text
-Mind
+OrganizationMind
 ├── manifest.yaml
+├── protocol.yaml
+├── protocol.lock.yaml
+├── conformance.yaml
+├── compatibility.yaml
 ├── schema/
-│   └── mind.schema.json
+│   ├── protocol.schema.json
+│   ├── mind.schema.json
+│   ├── module.schema.json
+│   ├── identity.schema.json
+│   ├── identity-resource.schema.json
+│   ├── relationships.schema.json
+│   ├── visual-assets.schema.json
+│   ├── conformance.schema.json
+│   └── compatibility.schema.json
 └── modules/
-    └── README.md
+    └── identity/
 ```
 
-`Mind` is the abstraction. A repository becomes a concrete implementation by composing modules such as identity, assistant policy, governance, engineering, knowledge, systems, or state.
+## Canary boundary
 
-Examples:
+The 0.9 synchronization is intentionally narrow:
 
-```text
-PersonalMind = Identity + Assistant + Knowledge + Systems + State
-OrganizationMind = Identity + Governance + Engineering + Portfolio + Decisions
-```
+- publish one universal organization Identity resource;
+- pin the exact protocol release contract set;
+- validate subject/owner binding and repository visibility;
+- do not infer relationships from GitHub metadata;
+- do not require a final logo or provider binding;
+- do not copy generic parent-organization content into this repository.
 
-The baseline does not require these modules and does not define their internal content.
-
-## Design Principles
-
-- **Single Responsibility:** one purpose per module and one topic per file.
-- **Open/Closed:** new mind types are added through modules, not by changing the baseline contract.
-- **Liskov Substitution:** every concrete mind satisfies the same manifest and validation invariants.
-- **Interface Segregation:** consumers load only the modules they need.
-- **Dependency Inversion:** concrete modules depend on the baseline contract; the baseline never depends on concrete modules.
-- Composition is preferred over inheritance.
-- Contracts are preferred over conventions that cannot be validated.
-
-## Lifecycle
-
-1. Build and validate a neutral baseline snapshot.
-2. Tag and release that snapshot.
-3. Fork it into another account or organization.
-4. Evolve each repository independently as a concrete mind.
-5. Share later neutral improvements only through explicit commits or versioned specifications.
+Full named visual-family, provider, project/product, and broader ecosystem enrichment remains a separate post-1.0 rollout.
 
 ## Visibility
 
-This repository may be public. Never commit secrets, credentials, private health data, access tokens, or other sensitive material.
+This repository contains durable public organization context only. Never commit secrets, credentials, private personal data, private infrastructure state, or transient operational state.
+
+<!-- © 2026 aiaiaiai · aiaiaiai.org -->
