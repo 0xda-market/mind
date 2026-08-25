@@ -12,32 +12,33 @@ This repository is a standalone concrete organization implementation of the impl
 - **Owner / root identity:** [0x0sky](https://github.com/0x0sky)
 - **Role:** digital commerce organization
 
-The parent-child relationship above is durable authored human context inherited from this repository's historical baseline documentation. This initial protocol canary deliberately does not invent a machine relationship predicate for it; relationship semantics belong in an explicit authored relationship resource when that contract is intentionally published.
+The parent-child relationship above is durable authored human context inherited from this repository's historical baseline documentation. This RC synchronization still does not invent a machine relationship predicate for it.
 
 ## Protocol contract
 
 `manifest.yaml` is the machine-readable entry point. This concrete `0xda-market` Mind currently publishes:
 
-- Mind Protocol: `0.9.0`;
+- Mind Protocol: `1.0.0-rc.1`;
 - manifest schema: v3;
 - organization context: `0.2.0`.
 
-`mind-repository.yaml` declares this repository as a concrete Mind only. It is neither protocol authority nor template/reference authority. Its intended relationship to `aiaiaiai-org/mind-protocol` is an independent consumer, not GitHub fork inheritance.
+`mind-repository.yaml` declares this repository as a concrete Mind only. It is neither protocol authority nor template/reference authority. Its relationship to `aiaiaiai-org/mind-protocol` is `independent_consumer`.
 
-`protocol.lock.yaml` keeps two facts separate:
+Exact release provenance:
 
-- **current protocol authority:** `aiaiaiai-org/mind-protocol`;
-- **immutable `0.9.0` release provenance:** `0x0sky/mind@v0.9.0`, commit `457844c8ced0318d91d628617ff6f8ec6f428ab7`.
+- authority/release repository: `aiaiaiai-org/mind-protocol`;
+- tag: `v1.0.0-rc.1`;
+- commit: `6bf8467f0e3990808464e118cc60cc83d8ab2ced`.
 
-The authority moved after `0.9.0`; that historical release is not recreated or rewritten in the new authority repository. Starting with `1.0.0-rc.1`, formal protocol releases are published from `aiaiaiai-org/mind-protocol`.
+`protocol.lock.yaml` pins the exact protocol descriptor, conformance contract, compatibility policy, and complete frozen schema set. The schema bytes remain the frozen pre-1.0 shapes; only the consumed release binding advances to the RC.
 
-The lock pins the exact protocol descriptor, conformance contract, compatibility policy, and complete frozen schema set. Protocol version and organization context version remain independent.
+Protocol version and organization context version remain independent. Canonical Identity stays `organization:0xda-market`, and `mind.context_version` stays `0.2.0`.
 
 ## Historical baseline
 
-The branch `foundation/baseline-v0.1.0` remains historical source material and is not rewritten. It represented an abstract baseline without a concrete subject. This `0.2.0` line is therefore a fresh concrete publication, not a claim that the old baseline is inside the supported protocol migration floor.
+The branch `foundation/baseline-v0.1.0` remains historical source material and is not rewritten. It represented an abstract baseline without a concrete subject. This `0.2.0` line remains the concrete organization context line.
 
-The repository already had a separate `master` history containing assistant/project configuration. This concrete line starts from that engineering history while explicitly preserving the authored organization facts from the historical baseline. Details are recorded in [`docs/migrations/foundation-to-mind-0.9.md`](docs/migrations/foundation-to-mind-0.9.md).
+Details of the original bridge are recorded in [`docs/migrations/foundation-to-mind-0.9.md`](docs/migrations/foundation-to-mind-0.9.md).
 
 ## Composition
 
@@ -50,31 +51,22 @@ OrganizationMind
 ├── conformance.yaml
 ├── compatibility.yaml
 ├── schema/
-│   ├── protocol.schema.json
-│   ├── mind.schema.json
-│   ├── module.schema.json
-│   ├── identity.schema.json
-│   ├── identity-resource.schema.json
-│   ├── relationships.schema.json
-│   ├── visual-assets.schema.json
-│   ├── conformance.schema.json
-│   └── compatibility.schema.json
 └── modules/
     └── identity/
 ```
 
-## Canary boundary
+## Consumer boundary
 
-The 0.9 synchronization is intentionally narrow:
+This synchronization intentionally remains narrow:
 
-- publish one universal organization Identity resource;
-- pin the exact protocol release contract set;
+- preserve one authored organization Identity resource;
+- pin the exact immutable RC contract set;
 - validate subject/owner binding and repository visibility;
 - do not infer relationships from GitHub metadata;
-- do not require a final logo or provider binding;
-- do not copy generic parent-organization content into this repository.
+- do not require or invent a final visual identity;
+- do not copy generic parent-organization context into this repository.
 
-Protocol compatibility is expressed by the exact release lock, not by GitHub fork ancestry. Full named visual-family, provider, project/product, and broader ecosystem enrichment remains a separate post-1.0 rollout.
+Protocol compatibility is expressed by the exact release lock, not GitHub fork ancestry. Full named visual-family, provider, project/product, and broader ecosystem enrichment remains post-`1.0.0` work.
 
 ## Visibility
 
