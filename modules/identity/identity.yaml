@@ -6,6 +6,11 @@ identity:
   type: organization
   id: 0xda-market
   display_name: 0xda-market
+  visual_identity:
+    primary_mark:
+      kind: emblem
+      asset_ref: 0xda-market-compact-emblem
+      alt: 0xda-market
 
 validation:
   schema: schema/identity-resource.schema.json
