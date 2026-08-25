@@ -18,7 +18,7 @@ The parent-child relationship above is durable authored human context inherited 
 
 `manifest.yaml` is the machine-readable entry point. This concrete `0xda-market` Mind currently publishes:
 
-- Mind Protocol: `1.0.0-rc.1`;
+- Mind Protocol: `1.0.0-rc.2`;
 - manifest schema: v3;
 - organization context: `0.2.0`.
 
@@ -27,8 +27,8 @@ The parent-child relationship above is durable authored human context inherited 
 Exact release provenance:
 
 - authority/release repository: `aiaiaiai-org/mind-protocol`;
-- tag: `v1.0.0-rc.1`;
-- commit: `6bf8467f0e3990808464e118cc60cc83d8ab2ced`.
+- tag: `v1.0.0-rc.2`;
+- commit: `acdcedcf02c8b4ef314179bf54955a84606c8fb5`.
 
 `protocol.lock.yaml` pins the exact protocol descriptor, conformance contract, compatibility policy, and complete frozen schema set. The schema bytes remain the frozen pre-1.0 shapes; only the consumed release binding advances to the RC.
 
