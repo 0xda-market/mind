@@ -1,0 +1,14 @@
+# © 2026 aiaiaiai · aiaiaiai.org
+# SPDX-License-Identifier: MIT
+schema_version: 1
+
+assets:
+  - ref: 0xda-market-compact-emblem
+    media_type: image/svg+xml
+    resource_path: assets/visual/0xda-market/compact-emblem.svg
+    integrity:
+      algorithm: sha256
+      digest: 4d244bb4e81e83dce681d02f4455abc4c15af50ff78bfb250105c19afba50d56
+
+validation:
+  schema: schema/visual-assets.schema.json
