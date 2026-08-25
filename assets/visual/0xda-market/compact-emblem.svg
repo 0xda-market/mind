@@ -1,0 +1,18 @@
+<!-- © 2026 aiaiaiai · aiaiaiai.org -->
+<!-- SPDX-License-Identifier: MIT -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">0xda-market compact emblem</title>
+  <desc id="desc">Green faceted exchange cell with three transparent negative-space channels forming an isometric cube.</desc>
+  <defs>
+    <mask id="facets-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+      <rect width="64" height="64" fill="black"/>
+      <polygon id="mask-body" points="32,7 52,18 52,42 32,55 12,42 12,18" fill="white"/>
+      <g id="channels" stroke="black" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="32" y1="7" x2="32" y2="31"/>
+        <line x1="12" y1="42" x2="32" y2="31"/>
+        <line x1="52" y1="42" x2="32" y2="31"/>
+      </g>
+    </mask>
+  </defs>
+  <rect id="mark-fill" width="64" height="64" fill="#93C482" mask="url(#facets-mask)"/>
+</svg>
