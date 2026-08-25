@@ -2,7 +2,7 @@
 
 > Canonical durable organization context for `0xda-market`.
 
-This repository is a concrete organization implementation of the implementation-independent [Mind Protocol](https://github.com/0x0sky/mind).
+This repository is a standalone concrete organization implementation of the implementation-independent [Mind Protocol](https://github.com/aiaiaiai-org/mind-protocol).
 
 ## Organization identity
 
@@ -16,13 +16,22 @@ The parent-child relationship above is durable authored human context inherited 
 
 ## Protocol contract
 
-`manifest.yaml` is the machine-readable entry point. This is the first concrete `0xda-market` mind line:
+`manifest.yaml` is the machine-readable entry point. This concrete `0xda-market` Mind currently publishes:
 
 - Mind Protocol: `0.9.0`;
 - manifest schema: v3;
 - organization context: `0.2.0`.
 
-`protocol.lock.yaml` pins the exact immutable upstream `v0.9.0` tag and commit, protocol descriptor, conformance contract, compatibility policy, and complete frozen schema set. Protocol version and organization context version are independent.
+`mind-repository.yaml` declares this repository as a concrete Mind only. It is neither protocol authority nor template/reference authority. Its intended relationship to `aiaiaiai-org/mind-protocol` is an independent consumer, not GitHub fork inheritance.
+
+`protocol.lock.yaml` keeps two facts separate:
+
+- **current protocol authority:** `aiaiaiai-org/mind-protocol`;
+- **immutable `0.9.0` release provenance:** `0x0sky/mind@v0.9.0`, commit `457844c8ced0318d91d628617ff6f8ec6f428ab7`.
+
+The authority moved after `0.9.0`; that historical release is not recreated or rewritten in the new authority repository. Starting with `1.0.0-rc.1`, formal protocol releases are published from `aiaiaiai-org/mind-protocol`.
+
+The lock pins the exact protocol descriptor, conformance contract, compatibility policy, and complete frozen schema set. Protocol version and organization context version remain independent.
 
 ## Historical baseline
 
@@ -35,6 +44,7 @@ The repository already had a separate `master` history containing assistant/proj
 ```text
 OrganizationMind
 ├── manifest.yaml
+├── mind-repository.yaml
 ├── protocol.yaml
 ├── protocol.lock.yaml
 ├── conformance.yaml
@@ -64,7 +74,7 @@ The 0.9 synchronization is intentionally narrow:
 - do not require a final logo or provider binding;
 - do not copy generic parent-organization content into this repository.
 
-Full named visual-family, provider, project/product, and broader ecosystem enrichment remains a separate post-1.0 rollout.
+Protocol compatibility is expressed by the exact release lock, not by GitHub fork ancestry. Full named visual-family, provider, project/product, and broader ecosystem enrichment remains a separate post-1.0 rollout.
 
 ## Visibility
 
