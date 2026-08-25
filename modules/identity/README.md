@@ -13,7 +13,7 @@ The machine-readable source is [`identity.yaml`](identity.yaml). Its type and id
 
 The identity remains provider-independent even though the current GitHub namespace uses the same string. Equality with a provider login is not evidence or authority for the canonical id.
 
-This concrete Mind currently consumes Mind Protocol `1.0.0-rc.1` and does not publish a canonical visual mark. Canonical visual identity remains optional and must be explicitly authored through a named visual-identity rollout; provider avatars and presentation fallbacks remain noncanonical unless deliberately adopted.
+This concrete Mind currently consumes Mind Protocol `1.0.0-rc.2` and does not publish a canonical visual mark. Canonical visual identity remains optional and must be explicitly authored through a named visual-identity rollout; provider avatars and presentation fallbacks remain noncanonical unless deliberately adopted.
 
 ## Scope
 
