@@ -21,18 +21,6 @@ EXPECTED_PROTOCOL_CONSUMPTION = {
     "release_commit": "acdcedcf02c8b4ef314179bf54955a84606c8fb5",
     "floating_master": "forbidden",
 }
-EXPECTED_IDENTITY = {
-    "type": "organization",
-    "id": "0xda-market",
-    "display_name": "0xda-market",
-    "visual_identity": {
-        "primary_mark": {
-            "kind": "emblem",
-            "asset_ref": "0xda-market-compact-emblem",
-            "alt": "0xda-market",
-        }
-    },
-}
 
 
 def validate() -> list[str]:
@@ -47,8 +35,8 @@ def validate() -> list[str]:
         errors.append("manifest must consume Mind Protocol 1.0.0-rc.2")
     if mind.get("name") != "mind@0xda-market":
         errors.append("canonical mind name must be mind@0xda-market")
-    if mind.get("context_version") != "0.3.0":
-        errors.append("canonical visual-identity publication must advance context_version to 0.3.0")
+    if mind.get("context_version") != "0.2.0":
+        errors.append("protocol-only RC synchronization must preserve context_version 0.2.0")
     if mind.get("subject") != EXPECTED_ENTITY or mind.get("owner") != EXPECTED_ENTITY:
         errors.append("subject and publication owner must remain organization:0xda-market")
 
@@ -57,7 +45,7 @@ def validate() -> list[str]:
         errors.append("0xda-market/mind must not declare protocol authority")
     concrete = roles.get("concrete_mind", {})
     if concrete.get("enabled") is not True or concrete.get("canonical_for_subject") != EXPECTED_ENTITY:
-        errors.append("repository must remain canonical only for organization:0xda-market")
+        errors.append("repository must be a concrete Mind canonical only for organization:0xda-market")
     if concrete.get("reference_implementation") is not False or concrete.get("template_authority") is not False:
         errors.append("concrete organization Mind must not be reference or template authority")
     if repository.get("protocol_consumption") != EXPECTED_PROTOCOL_CONSUMPTION:
@@ -67,20 +55,19 @@ def validate() -> list[str]:
 
     modules = manifest.get("modules", {})
     if modules.get("required") != ["identity"] or modules.get("registered") != ["identity"]:
-        errors.append("visual identity must remain a resource of the authored identity module")
+        errors.append("RC consumer must contain only the authored identity module")
 
-    descriptor = load_yaml_mapping(ROOT / "modules/identity/module.yaml").get("module", {})
-    if descriptor.get("owner") != EXPECTED_ENTITY:
-        errors.append("identity module owner must remain organization:0xda-market")
-    resources = descriptor.get("resources", {})
-    if set(resources) != {"identity", "visual_assets"}:
-        errors.append("identity module must register exactly identity and visual_assets resources")
+    descriptor = load_yaml_mapping(ROOT / "modules/identity/module.yaml")
+    if descriptor.get("module", {}).get("owner") != EXPECTED_ENTITY:
+        errors.append("identity module owner must be organization:0xda-market")
 
     identity = load_yaml_mapping(ROOT / "modules/identity/identity.yaml").get("identity")
-    if identity != EXPECTED_IDENTITY:
-        errors.append("canonical Identity or primary visual mark drifted from the authored publication")
+    if identity != {"type": "organization", "id": "0xda-market", "display_name": "0xda-market"}:
+        errors.append("canonical Identity must remain organization:0xda-market")
+    if isinstance(identity, dict) and "visual_identity" in identity:
+        errors.append("RC synchronization must not invent canonical visual identity")
     if (ROOT / "modules/relationships/module.yaml").exists():
-        errors.append("visual identity publication must not invent a relationship module")
+        errors.append("RC synchronization must not invent a relationship module")
 
     return errors
 
@@ -89,14 +76,14 @@ def main() -> int:
     try:
         errors = validate()
     except (OSError, ValueError, TypeError) as error:
-        print("0xda-market canary validation failed:\n- " + str(error), file=sys.stderr)
+        print(f"0xda-market canary validation failed:\n- {error}", file=sys.stderr)
         return 1
     if errors:
         print("0xda-market canary validation failed:", file=sys.stderr)
         for error in errors:
             print(f"- {error}", file=sys.stderr)
         return 1
-    print("0xda-market is a standalone 1.0.0-rc.2 consumer with canonical visual identity context 0.3.0")
+    print("0xda-market is a standalone concrete 1.0.0-rc.2 consumer with unchanged Identity/context")
     return 0
 
 
